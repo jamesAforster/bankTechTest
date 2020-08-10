@@ -68,7 +68,7 @@ describe("Account", function() {
       
       expect(account.statement[1]).toEqual(jasmine.objectContaining(
         { 
-          date: "10/08/2020",
+          date: this.date,
           credit: 0, 
           debit: 50,
           balance: 50
