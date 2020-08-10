@@ -1,7 +1,7 @@
 describe("Account", function() {
 
   beforeEach(function() {
-    account = new Account();
+    account = new Account;
   });
 
   describe("Account is instantiated with a default balance of 0", function() {
@@ -36,7 +36,45 @@ describe("Account", function() {
       account.withdraw(56);
       expect(account.balance).toEqual(21)
     })
-
   });
 
+  describe("Print balance will return a list of transactions", function() {
+
+    account = new Account;
+
+    it('Will reflect making a deposit correctly', function() {
+      account.deposit(100);
+      expect(account.statement[0]).toEqual(jasmine.objectContaining(
+        { 
+          date: "10/08/2020",
+          credit: 100, 
+          debit: 0,
+          balance: 100
+        }
+      ));
+    });
+
+    it('Will reflect making a deposit, and then a withdrawal correctly', function() {
+      account.deposit(100);
+      account.withdraw(50);
+
+      expect(account.statement[0]).toEqual(jasmine.objectContaining(
+        { 
+          date: "10/08/2020",
+          credit: 100, 
+          debit: 0,
+          balance: 100
+        }
+      ));
+      
+      expect(account.statement[1]).toEqual(jasmine.objectContaining(
+        { 
+          date: "10/08/2020",
+          credit: 0, 
+          debit: 50,
+          balance: 50
+        }
+      ));
+    });
+  });
 });
