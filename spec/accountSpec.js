@@ -21,6 +21,22 @@ describe("Account", function() {
       account.deposit(357);
       expect(account.balance).toEqual(380)
     })
+  });
+
+  describe("You can withdraw money from the account", function() {
+    it('withdrawing money will decrease the balance by the right amount', function() {
+      account.deposit(100);
+      account.withdraw(70);
+      expect(account.balance).toEqual(30);
+    })
+
+    it('Will allow you to withdraw more than once', function() {
+      account.deposit(100);
+      account.withdraw(23);
+      account.withdraw(56);
+      expect(account.balance).toEqual(21)
+    })
 
   });
+
 });
