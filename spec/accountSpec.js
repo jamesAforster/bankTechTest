@@ -16,5 +16,11 @@ describe("Account", function() {
       expect(account.balance).toEqual(50)
     })
 
+    it('Will allow you to deposit more than once', function() {
+      account.deposit(23);
+      account.deposit(357);
+      expect(account.balance).toEqual(380)
+    })
+
   });
 });
