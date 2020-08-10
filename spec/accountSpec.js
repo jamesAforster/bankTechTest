@@ -2,6 +2,7 @@ describe("Account", function() {
 
   beforeEach(function() {
     account = new Account;
+    this.date = (new Date()).toLocaleDateString('en-GB')
   });
 
   describe("Account is instantiated with a default balance of 0", function() {
@@ -40,13 +41,11 @@ describe("Account", function() {
 
   describe("Print balance will return a list of transactions", function() {
 
-    account = new Account;
-
     it('Will reflect making a deposit correctly', function() {
       account.deposit(100);
       expect(account.statement[0]).toEqual(jasmine.objectContaining(
         { 
-          date: "10/08/2020",
+          date: this.date,
           credit: 100, 
           debit: 0,
           balance: 100
@@ -60,7 +59,7 @@ describe("Account", function() {
 
       expect(account.statement[0]).toEqual(jasmine.objectContaining(
         { 
-          date: "10/08/2020",
+          date: this.date,
           credit: 100, 
           debit: 0,
           balance: 100
