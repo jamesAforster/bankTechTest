@@ -37,6 +37,11 @@ describe("Account", function() {
       account.withdraw(56);
       expect(account.balance).toEqual(21)
     })
+
+    it('Will not allow you to withdraw more than the balance', function() {
+      account.deposit(100);
+      expect(function(){account.withdraw(200)}).toThrow("Insufficient funds");
+    });
   });
 
   describe("Print balance will return a list of transactions", function() {
