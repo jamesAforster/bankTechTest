@@ -5,13 +5,13 @@ describe("Account", function() {
     this.date = (new Date()).toLocaleDateString('en-GB')
   });
 
-  describe("Account is instantiated with a default balance of 0", function() {
+  describe("Balance", function() {
     it('Will return 0 as its starting balance', function() {
       expect(account.balance).toEqual(0)
     });
   });
 
-  describe("You can deposit funds into the account", function() {
+  describe("Deposit", function() {
     it('Depositing money will increase the balance by the right amount', function() {
       account.deposit(50);
       expect(account.balance).toEqual(50)
@@ -24,7 +24,7 @@ describe("Account", function() {
     })
   });
 
-  describe("You can withdraw money from the account", function() {
+  describe("Withdraw", function() {
     it('withdrawing money will decrease the balance by the right amount', function() {
       account.deposit(100);
       account.withdraw(70);
@@ -44,10 +44,11 @@ describe("Account", function() {
     });
   });
 
-  describe("Print balance will return a list of transactions", function() {
+  describe("Print", function() {
 
     it('Will reflect making a deposit correctly', function() {
       account.deposit(100);
+
       expect(account.statement[0]).toEqual(jasmine.objectContaining(
         { 
           date: this.date,
