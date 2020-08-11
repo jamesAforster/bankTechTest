@@ -16,4 +16,8 @@ class Account {
     this.balance -= amount;
     this.statement.push(new Transaction(0, amount, this.balance));
   }
+
+  print() {
+    console.table(this.statement);
+  }
 };
