@@ -52,7 +52,7 @@ describe("Account", function() {
         { 
           date: this.date,
           credit: 100, 
-          debit: 0,
+          debit: null,
           balance: 100
         }
       ));
@@ -61,20 +61,11 @@ describe("Account", function() {
     it('Will reflect making a deposit, and then a withdrawal correctly', function() {
       account.deposit(100);
       account.withdraw(50);
-
-      expect(account.statement[0]).toEqual(jasmine.objectContaining(
-        { 
-          date: this.date,
-          credit: 100, 
-          debit: 0,
-          balance: 100
-        }
-      ));
       
       expect(account.statement[1]).toEqual(jasmine.objectContaining(
         { 
           date: this.date,
-          credit: 0, 
+          credit: null, 
           debit: 50,
           balance: 50
         }
