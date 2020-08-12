@@ -28,15 +28,14 @@ module.exports = function(config) {
     preprocessors: { 'src/account.js': ['coverage']
     },
 
-
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['dots', 'coverage'],
 
     coverageReporter: {
-      type : 'html',
-      dir : 'coverage/'
+      type : 'text',
+      dir : 'coverage/',
     },
 
     // web server port

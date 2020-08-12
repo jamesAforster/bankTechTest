@@ -20,7 +20,7 @@ class Account {
   print() {
     console.table(this.statement);
   }
-
+  
   insert_to_statement(credit, debit) {
     this.credit = credit;
     this.debit = debit;
