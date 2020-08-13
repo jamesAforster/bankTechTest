@@ -80,7 +80,9 @@ describe("Account", function() {
     });
 
     it('Will print each transaction correctly', function() {
-      expect(console.table).toHaveBeenCalledWith(account.print);
+      var TransactionA = new Transaction(100, null, 100);
+      var TransactionB = new Transaction(null, 50, 50);
+      expect(console.table).toHaveBeenCalledWith([TransactionA, TransactionB])
     });
 
   });
