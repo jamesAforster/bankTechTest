@@ -23,7 +23,7 @@ class Account {
     this.statement.forEach(function (item) {
       printedStatement += `\n${item["date"]} || ${item["credit"]} || ${item["debit"]} || ${item["balance"]}`
     });
-    return printedStatement
+    console.log(printedStatement);
   };
 
   insert_to_statement(credit, debit) {

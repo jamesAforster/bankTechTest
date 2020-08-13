@@ -43,54 +43,17 @@ describe("Account", function() {
     });
   });
 
-  describe("Statement", function() {
-    it('Will reflect making a deposit correctly', function() {
-      account.deposit(100);
-      expect(account.statement[0]).toEqual(jasmine.objectContaining(
-        { 
-          date: this.date,
-          credit: 100, 
-          debit: null,
-          balance: 100
-        }
-      ));
-    });
-
-    it('Will reflect making a deposit, and then a withdrawal correctly', function() {
+  describe("Print", function() {
+    beforeEach(function() {
+      spyOn(console, 'log');
       account.deposit(100);
       account.withdraw(50);
-      
-      expect(account.statement[1]).toEqual(jasmine.objectContaining(
-        { 
-          date: this.date,
-          credit: null, 
-          debit: 50,
-          balance: 50
-        }
-      ));
+      account.print();
     });
-  });
 
-  describe("Print", function() {
-    it("Will print one transaction correctly", function() {
-      account.deposit(100)
-      expect(account.print()).toEqual("date || credit || debit || balance\n13/08/2020 || 100 || null || 100")
+    it("Will print transactions correctly", function() {
+      expect(console.log).toHaveBeenCalledWith("date || credit || debit || balance\n13/08/2020 || 100 || null || 100\n13/08/2020 || null || 50 || 50");
     })
+
   })
 })
-
-
-
-  // describe('Print', function() {
-  //   beforeEach(function() {
-  //     spyOn(console, 'log');
-  //     account.deposit(100);
-  //     account.withdraw(50);
-  //     account.print();
-  //   });
-
-  //   it('Will print each transaction correctly', function() {
-  //     expect(console.table).toHaveBeenCalledWith([TransactionA, TransactionB]);
-  //   });
-
-  // });
