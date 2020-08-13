@@ -51,9 +51,9 @@ describe("Account", function() {
       account.print();
     });
 
-    it("Will print transactions correctly", function() {
-      expect(console.log).toHaveBeenCalledWith("date || credit || debit || balance\n13/08/2020 || 100 || null || 100\n13/08/2020 || null || 50 || 50");
+    it("Will print a transaction correctly", function() {
+      expect(console.log).toHaveBeenCalledWith("date || credit || debit || balance\n13/08/2020 || null || 50 || 50\n13/08/2020 || 100 || null || 100");
     })
 
-  })
-})
+  });
+});

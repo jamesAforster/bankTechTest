@@ -20,7 +20,8 @@ class Account {
 
   print() {
     let printedStatement = `date || credit || debit || balance`
-    this.statement.forEach(function (item) {
+    let chronoStatement = this.statement.reverse();
+    chronoStatement.forEach(function (item) {
       printedStatement += `\n${item["date"]} || ${item["credit"]} || ${item["debit"]} || ${item["balance"]}`
     });
     console.log(printedStatement);
