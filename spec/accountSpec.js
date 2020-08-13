@@ -71,20 +71,26 @@ describe("Account", function() {
     });
   });
 
-  describe('Print', function() {
-    beforeEach(function() {
-      spyOn(console, 'table');
-      account.deposit(100);
-      account.withdraw(50);
-      account.print();
-    });
+  describe("Print", function() {
+    it("Will print one transaction correctly", function() {
+      account.deposit(100)
+      expect(account.print()).toEqual("date || credit || debit || balance\n13/08/2020 || 100 || null || 100")
+    })
+  })
+})
 
-    it('Will print each transaction correctly', function() {
-      var TransactionA = new Transaction(100, null, 100);
-      var TransactionB = new Transaction(null, 50, 50);
-      expect(console.table).toHaveBeenCalledWith([TransactionA, TransactionB])
-    });
 
-  });
 
-});
+  // describe('Print', function() {
+  //   beforeEach(function() {
+  //     spyOn(console, 'log');
+  //     account.deposit(100);
+  //     account.withdraw(50);
+  //     account.print();
+  //   });
+
+  //   it('Will print each transaction correctly', function() {
+  //     expect(console.table).toHaveBeenCalledWith([TransactionA, TransactionB]);
+  //   });
+
+  // });

@@ -1,4 +1,5 @@
 class Account {
+
   constructor() {
     this.balance = 0;
     this.statement = [];
@@ -18,12 +19,18 @@ class Account {
   }
 
   print() {
-    console.table(this.statement);
-  }
-  
+    let printedStatement = `date || credit || debit || balance`
+    this.statement.forEach(function (item) {
+      printedStatement += `\n${item["date"]} || ${item["credit"]} || ${item["debit"]} || ${item["balance"]}`
+    });
+    return printedStatement
+  };
+
   insert_to_statement(credit, debit) {
-    this.credit = credit;
-    this.debit = debit;
-    this.statement.push(new Transaction(this.credit, this.debit, this.balance));
+    this.statement.push(new Transaction(credit, debit, this.balance));
   }
+
 }
+
+
+    
