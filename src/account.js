@@ -7,7 +7,7 @@ class Account {
 
   deposit(amount) {
     this.balance += amount;
-    this.insert_to_statement(amount, null);
+    this.insert_to_statement(amount, "");
   }
 
   withdraw(amount) {
@@ -15,7 +15,7 @@ class Account {
       throw "Insufficient funds";
     }
     this.balance -= amount;
-    this.insert_to_statement(null, amount);
+    this.insert_to_statement("" ,amount);
   }
 
   print() {
@@ -30,7 +30,6 @@ class Account {
   insert_to_statement(credit, debit) {
     this.statement.push(new Transaction(credit, debit, this.balance));
   }
-
 }
 
 
