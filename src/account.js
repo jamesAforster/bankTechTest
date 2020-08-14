@@ -1,4 +1,5 @@
 class Account {
+
   constructor() {
     this.balance = 0;
     this.statement = [];
@@ -6,7 +7,7 @@ class Account {
 
   deposit(amount) {
     this.balance += amount;
-    this.insert_to_statement(amount, null);
+    this.insert_to_statement(amount, "");
   }
 
   withdraw(amount) {
@@ -14,16 +15,22 @@ class Account {
       throw "Insufficient funds";
     }
     this.balance -= amount;
-    this.insert_to_statement(null, amount);
+    this.insert_to_statement("" ,amount);
   }
 
   print() {
-    console.table(this.statement);
+    let printedStatement = `date || credit || debit || balance`;
+    let chronoStatement = this.statement.reverse();
+    chronoStatement.forEach(function (item) {
+      printedStatement += `\n${item["date"]} || ${item["credit"]} || ${item["debit"]} || ${item["balance"]}`;
+    });
+    console.log(printedStatement);
   }
-  
+
   insert_to_statement(credit, debit) {
-    this.credit = credit;
-    this.debit = debit;
-    this.statement.push(new Transaction(this.credit, this.debit, this.balance));
+    this.statement.push(new Transaction(credit, debit, this.balance));
   }
 }
+
+
+    
