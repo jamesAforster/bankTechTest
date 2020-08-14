@@ -45,7 +45,6 @@ describe("Account", function() {
 
   describe("Print", function() {
     beforeEach(function() {
-      account = new Account();
       spyOn(console, 'log');
       account.deposit(100);
       account.withdraw(50);
@@ -53,7 +52,8 @@ describe("Account", function() {
     });
 
     it("Will print a transaction correctly", function() {
-      expect(console.log).toHaveBeenCalledWith("date || credit || debit || balance\n13/08/2020 ||  || 50 || 50\n13/08/2020 || 100 ||  || 100");
+      var date = new Date().toLocaleDateString('en-GB')
+      expect(console.log).toHaveBeenCalledWith(`date || credit || debit || balance\n${date} ||  || 50 || 50\n${date} || 100 ||  || 100`);
     })
 
   });

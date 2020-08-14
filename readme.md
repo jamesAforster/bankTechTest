@@ -28,16 +28,10 @@ I initially created an Account class which held the property 'balance'. After th
 
 I decided to hold the statement history in an array. It made sense at that point to create a new Transaction object which holds the properties to be displayed in the statement. When a transaction occurs, a new Transaction is instantiated with the correct properties, and inserted into the statement array.
 
-Printing the statement will display a table with all of the transations listed. Although it adds an extra 'index' column which I believe is unavoidable, it makes the transaction history very easy to read and so I opted for that over generating a table made up of strings.
+The print() function holds a header
 
-**Thoughts on what to improve**
+**Thoughts on what I will improve:
 
-* My test coverage is < 95%. The reason is I have not been able to figure out how to test the output of 'console.table', which is called by Account#print. I have tried to implement a spy but have been unable to get it to work and think I need to rethink how I am doing it. I could instead be printing the table to the DOM but the spec asked us to create a command line interface so I have tried to stick to that.
-* I am not creating a double of my Transaction class. Because it's a object without any functions, I am struggling to think of (if we are testing for behaviour rather than state) why it should be doubled.
-* I feel like I should be testing Transaction and Date classes separately so that the scope of my tests are narrowed but would love to have a check-in to make sure that make sense.
-* Should Statement be a different class as well?
-* I'm unsure my account#print function is right in that it doesn't reproduce exactly what is shown in the spec. Is that a problem?
-
-```
-
-```
+* I'm aware that using floating points is a big issue when dealing with currency but at this stage I've run out of time to really sort out a solution before the hand in deadline.
+* Currently I'm not mocking my Transaction class dependency. This could be useful in testing different dates.
+* I'm having a weird issue when using floating points when testing print(). My console.log spy doesn't return floating points, it seems to reduce them to normal integers. Interesting problem and have run out of time to get to the bottom of it!
