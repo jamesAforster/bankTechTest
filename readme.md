@@ -30,9 +30,10 @@ I decided to hold the statement history in an array. It made sense at that point
 
 The print() function holds a hard coded header, reverses the array of transactions, and then adds each transaction, along with a line break, to the header, resulting in a printed statement.
 
-**Thoughts on what I will improve:**
+**Thoughts on what I would have liked to improve:**
 
 * I'm aware that using floating points is a big issue when dealing with currency but at this stage I've run out of time to really sort out a solution before the hand in deadline.
+* I don't like the fact that I am passing an empty string for debit/credit to leave a blank space in the statement. It doesn't feel very clean to me.
 * My Print class is doing too much - I will separate this out into a 'statement constructor' and the method which console.log's the statement itself.
 * I should separate statement into its own class.
 * Currently I'm not mocking my Transaction class dependency. This could be useful in testing different dates.
